@@ -1,0 +1,60 @@
+import math
+
+# This is a capstone project showing what i've learnt so far 
+# A small financial company has asked me to create a program 
+# The program should allow the user to access two different financial calculators
+# An investment calculator and a home loan repayment calculator
+
+
+# The user should be able to pick which calculation they want
+# firstly the output the user sees below
+
+print("investment - to calculate the amount of interest you'll earn on your investment") 
+print("bond - to calculate the amount you'll have to pay on a home loan")
+
+# Make string varibles below
+investment = str("investment")
+
+bond = str("bond")
+
+simple = str("simple")
+
+compound = str("compound")
+
+# Ask user to enter their option for investment or bond 
+calculator_type = str(input("Enter either 'investment' or 'bond' from the menu above to proceed: "))
+
+# Use if statment to find if the string user entered was 'bond', 'investment' or neither
+if calculator_type == bond:
+    print("You selected bond") # Let user know what they have selected
+    
+    house_val = int(input("Please enter the present value of the house: "))
+
+    house_rate = int(input("Please enter the interest rate: "))
+
+    month_pay = int(input("Please enter the number of months you plan to take to repay the bond: "))
+
+    repayment = (house_rate * house_val)/(1 - (1 + house_rate)**(-month_pay))
+    print(repayment)
+
+elif calculator_type == investment:
+     print("you selected investment")
+
+     depo = int(input("Please enter amount of money you want to deposit: "))
+
+     interest_rate = int(input("Please enter the percentage of your interest rate: "))
+
+     inves_years = int(input("Please enter the amount of years you plan to invest: "))
+
+     interest_type = str(input("Do you want a 'compound' or 'simple' interest: "))
+
+     if interest_type == simple:
+         total_simple = depo *(1 + interest_rate * inves_years)
+         print(total_simple)
+    
+     if interest_type == compound:
+         total_compound = depo * math.pow((1+interest_rate), inves_years) 
+         print(total_compound)
+
+else:
+    print("Error invaild option, run again ")
